@@ -15,31 +15,32 @@ def miniMaxSum(arr):
     # 1 - GET THE MIN SUM
     max_num = 0
     min_sum = 0
-    # get the max number for the min sum
-    # also use this to get the max number
-    # for i in arr:
-    #     if i > max_num:
-    #         max_num = i
 
-    max_num = max(arr)
-    for j in arr:
-        if j == max_num:
-            pass
-        else:
-            min_sum += j
+    array_length = len(arr)
+    allowed_items = 5
+    if array_length == allowed_items:
+        # get the max number for the min sum
+        # also use this to get the max number
+        # for i in arr:
+        #     if i > max_num:
+        #         max_num = i
+        max_num = max(arr)
+        for j in arr:
+            if j < max_num:
+                min_sum += j
 
-    # 2 - GET THE MAX SUM
-    max_sum = 0
-    # get the min number of the array
-    min_num = min(arr)
-    for k in arr:
-        if k == min_num:
-            pass
-        else:
-            max_sum += k
+        # 2 - GET THE MAX SUM
+        max_sum = 0
+        # get the min number of the array
+        min_num = min(arr)
+        for k in arr:
+            if k > min_num:
+                max_sum += k
 
-    final = print(f"{min_sum} {max_sum}")
-    return final
+        final = print(f"{min_sum} {max_sum}")
+        return final
+    else:
+        return print("Error")
 
 
 if __name__ == "__main__":
