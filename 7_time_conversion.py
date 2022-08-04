@@ -8,7 +8,7 @@ Note: - 12:00:00AM on a 12-hour clock is 00:00:00 on a 24-hour clock.
 
 
 def main():
-    time = "12:00:00AM"
+    time = "01:59:00AM"
     timeConversion(time)
 
 
@@ -19,18 +19,21 @@ def timeConversion(s):
 
     # am or pm, get the last 2 characters
     am_or_pm = s[-2:]
+    am_or_pm = am_or_pm.upper()
 
     # format without the am or pm, remove las 2 characters
     new_format = s[2:-2]
 
-    if am_or_pm == "PM" and hour < 12:
+    if am_or_pm == "PM" and hour == 12:
+        new_hour = "12"
+    elif am_or_pm == "PM" and hour < 12:
         new_hour = hour + 12
-        new_hour = str(new_hour)
-    elif am_or_pm == "AM" and hour != 12:
-        new_hour = hour
-        new_hour = str(new_hour)
     elif am_or_pm == "AM" and hour == 12:
         new_hour = "00"
+    elif am_or_pm == "AM" and hour < 12:
+        new_hour = str(hour)
+        new_hour = "0" + new_hour
+
     final_hour = f"{new_hour}{new_format}"
 
     return final_hour
